@@ -11,7 +11,20 @@ class Mercury230 : QObject
 {
     Q_OBJECT
 public:
-   explicit Mercury230(QObject* parent  = nullptr);
+    explicit Mercury230(QObject* parent  = nullptr);
+    bool IsObjectDBOpened;
+    bool IsSysQueryCreated;
+    bool IsObjQueryCreated;
+    QString argstr;                                  // 12.12.2017 Вводные аргументы DRIVER(Mercury230<*>)
+    CDispatchThread* pDT;
+    CListenThread* pLT;
+    QSqlDatabase sdb;
+    QSqlDatabase odb;
+    QSqlQuery *mSQuery;                              // Запрос к системной БД
+    QSqlQuery *mOQuery;                              // Запрос к объектной БД
+
+    quint32 ObjectID;
+    QString GetData(CDispatchThread* pServerObject); // Общее чтение
 signals:
 
 public slots:
